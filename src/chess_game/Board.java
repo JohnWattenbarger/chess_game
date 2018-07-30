@@ -3,7 +3,6 @@ import java.util.*;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
-// import java.util.Scanner;
 /** An array of Piece objects.
  * 
  * @author John
@@ -63,17 +62,6 @@ public class Board
         for(int i=0; i<this.boardSize; i++)
             for(int j=0; j<this.boardSize; j++)
                 this.board[i][j].setPiece(otherBoard.board[i][j]);
-        
-        /*
-        Piece tempPiece;
-        
-        for(int row=0; row<boardSize; row++)
-            for(int column=0; column<boardSize; column++)
-            {
-                tempPiece = new Piece();
-                tempPiece.setPiece(otherBoard.board[row][column]);
-                this.board[row][column] = tempPiece;
-            }*/
     }
     
     /**
@@ -257,7 +245,7 @@ public class Board
         
         if(attemptedMove.isLegal())
         {
-            // test
+            // test (never occurs)
             if(attemptedMove.isInCheckAfter()){
                 errorMessage = "Still in check";
                 System.out.println("Still in check");
@@ -505,18 +493,6 @@ public class Board
                     legalMoves[i] = newLocation;
                     i++;
                 }
-                
-//                tempMove.newLocation = newLocation;
-//                tempMove.setNewPiece(this.pieceAt(newLocation));
-//                
-//                // test
-////                tempMove.print();
-////                
-//                if(tempMove.isLegal())
-//                {
-//                    legalMoves[i] = newLocation;
-//                    i++;
-//                }
             }
         }
         
@@ -730,14 +706,9 @@ public class Board
         
         // check if any move can capture the king
         for(int i=0; i<legalMoves.size(); i++)
-//            // test
-//            legalMoves.get(i).print();
 //            
             if(legalMoves.get(i).newLocation.sameLocation(currentKingLocation))
             {
-//                // test
-//                legalMoves.get(i).print();
-//                
                 return true;
             }
         

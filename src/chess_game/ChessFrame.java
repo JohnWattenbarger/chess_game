@@ -91,9 +91,6 @@ public class ChessFrame implements ActionListener
                 else
                 {
                     moveTo = new Location(i/8, i%8);
-                    // test
-//                    System.out.print("Move to: ");
-//                    moveTo.printChessNotation();
                     
                     board.userMove(moveFrom, moveTo);
                     moveFrom = null;
@@ -145,14 +142,12 @@ public class ChessFrame implements ActionListener
             groupLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
                 .addComponent(titleScreen)
                 .addComponent(newGame)
-                //.addComponent(test)
         );
         
         groupLayout.setVerticalGroup(
             groupLayout.createSequentialGroup()
                 .addComponent(titleScreen)
                 .addComponent(newGame)
-                //.addComponent(test)
         );
     }
     
