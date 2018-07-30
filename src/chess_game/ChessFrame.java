@@ -75,11 +75,12 @@ public class ChessFrame implements ActionListener
         
         if (e.getSource() == newGame)
             cardLayout.show(panelSwitcher, "panel2");
-            //cardLayout.show(panelSwitcher, "testPanel");
+        
+        // can be removed?
         if (e.getSource() == test)
             panel2.add(test);
             
-        // test
+        // action after a piece button is clicked
         for(int i=0; i<pieceButtons.length; i++)
         {
             if (e.getSource() == pieceButtons[i])
@@ -98,6 +99,7 @@ public class ChessFrame implements ActionListener
                     moveFrom = null;
                     synchBoards();
                     message.setText(board.turnColor + "'s turn");
+                    statusMessage.setText(board.errorMessage);
                     if (board.isCheckmate())
                         message.setText(board.turnColor + " wins!");
                 }
