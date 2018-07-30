@@ -48,6 +48,7 @@ public class ChessFrame implements ActionListener
     int boardWidth, boardHeight, boardX, boardY, pieceWidth, pieceHeight;
     int boardDepth, pieceDepth, currentPieceDepth;
     JLabel message;
+    JLabel statusMessage;
 // practice panel
     JPanel testPanel = new JPanel();
     JButton b1, b2;
@@ -228,11 +229,19 @@ public class ChessFrame implements ActionListener
             }
         }
         
+        // adds a label to display whose turn it is
         message = new JLabel("TEST");
         message.setSize(boardWidth/2, boardHeight/10);
         message.setLocation(boardX + boardWidth/2, boardY - boardHeight/8);
         message.setFont(labelFont);
         panel2.add(message);
+        
+        // adds a 2nd label for status updates (i.e. check, illegal move, etc.)
+        statusMessage = new JLabel(" ");
+        statusMessage.setSize(boardWidth/2, boardHeight/10);
+        statusMessage.setLocation(boardX + boardWidth/2, boardY + boardHeight + boardHeight/32);
+        statusMessage.setFont(labelFont);
+        panel2.add(statusMessage);
         
         panel2.setBackground(new Color(180, 240, 250));
         panel2.setOpaque(true);
