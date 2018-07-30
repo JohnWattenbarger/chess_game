@@ -78,6 +78,14 @@ Last Edit:
         > need to make b.move() come from button clicks, not command typing
 
 Current Goals:
+    - Add status update to the GUI
+        > create a JLabel that contains status updates
+        > changes System.out.println() messages in Board.java to a String
+        > pass the String to ChessFrame.java
+            -> if there is a new String, display it
+    - Make the GUI display clicks
+        > when a piece is selected, change the color (or something)
+        > when a piece is unselected, change the color back
     - Add en passant rules
         > The board() should have a Location called enPassantLocation
         > When a move() is a pawn move: 
@@ -127,6 +135,7 @@ Future Features:
     - Cleanup chess game (make it faster)
         > make legal move testing only test possible locations (i.e. diagonal 
             moves for bishops)
+    - make 2 modes (text and GUI)
 */
 
 /**

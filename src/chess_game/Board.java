@@ -17,6 +17,7 @@ public class Board
     int boardSize = 8;
     public String winner;
     Location enPassantLocation = null;
+    public String errorMessage;
     
     public Board()
     {
@@ -24,6 +25,7 @@ public class Board
         defaultBoard();
         setImage();
         winner = "";
+        errorMessage = "";
     }
     
     /**
@@ -256,8 +258,10 @@ public class Board
         if(attemptedMove.isLegal())
         {
             // test
-            if(attemptedMove.isInCheckAfter())
+            if(attemptedMove.isInCheckAfter()){
+                errorMessage = "Still in check";
                 System.out.println("Still in check");
+            }
             
             // if this is a castle move, move the rook
             if(attemptedMove.isCastleMove)
@@ -278,6 +282,7 @@ public class Board
         }
         else
         {
+            errorMessage = "ILLEGAL MOVE";
             System.out.println("!!! ILLEGAL MOVE !!!");
             userMove();
         }
@@ -319,6 +324,7 @@ public class Board
         }
         else
         {
+            errorMessage = "ILLEGAL MOVE";
             System.out.println("!!! ILLEGAL MOVE !!!");
         }
     }
@@ -830,6 +836,7 @@ public class Board
         
         else
         {
+            errorMessage = "ILLEGAL MOVE";
             System.out.println("!!! ILLEGAL SELECTION !!!");
             pawnPromotion(pawnLocation);
         }
@@ -840,6 +847,7 @@ public class Board
         String newPieceType = "";
         Scanner cin = new Scanner(System.in);
         
+        errorMessage = "Select a new piece (q, r, b, n): ";
         System.out.print("Select a new piece (q, r, b, n): ");
         newPieceType = cin.nextLine();
         
