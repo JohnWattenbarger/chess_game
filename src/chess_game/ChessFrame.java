@@ -103,6 +103,10 @@ public class ChessFrame implements ActionListener
         }
     }   
     
+    /**
+     * Sets up the frame that contains all panels. Sets the height, width, font,
+     * and allows it to terminate the program when closed.
+     */
     private void setupFrame()
     {
         thisFrame.setLayout(new BorderLayout());
@@ -116,6 +120,11 @@ public class ChessFrame implements ActionListener
         width = thisFrame.getWidth();
     }
     
+    /**
+     * Adds all components to the main menu. The main menu is the first panel 
+     * that appears. It has a title at the top, followed by buttons that lead 
+     * to other game modes.
+     */
     private void setupMainMenu()
     {
         groupLayout = new GroupLayout(panel1);
@@ -134,6 +143,7 @@ public class ChessFrame implements ActionListener
         newGame.setFont(buttonFont);
         newGame.addActionListener(this);
         
+        // not used (could be replaced later for other buttons
         test = new JButton("Test");
         test.setFont(buttonFont);
         test.addActionListener(this);
@@ -142,15 +152,20 @@ public class ChessFrame implements ActionListener
             groupLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
                 .addComponent(titleScreen)
                 .addComponent(newGame)
+                //.addComponent(test)
         );
         
         groupLayout.setVerticalGroup(
             groupLayout.createSequentialGroup()
                 .addComponent(titleScreen)
                 .addComponent(newGame)
+                //.addComponent(test)
         );
     }
     
+    /**
+     * Creates the panel with the chess game. Sets up the board, and pieces.
+     */
     private void setupNewGame()
     {
         // set sizes
@@ -165,7 +180,6 @@ public class ChessFrame implements ActionListener
         panel2 = new JLayeredPane();
         panel2.setLayout(null);
         
-       
        // set the pane depths
         boardDepth = 1;
         pieceDepth = 2;
@@ -244,6 +258,10 @@ public class ChessFrame implements ActionListener
         panel2.setOpaque(true);
     }
     
+    /**
+     * Adds all panels to the cardLayout. Displays the 1st panel in the 
+     * cardLayout.
+     */
     private void setupPanelSwitcher()
     {
         panelSwitcher = new JPanel(new CardLayout());
@@ -251,7 +269,7 @@ public class ChessFrame implements ActionListener
         panelSwitcher.add(panel1, "panel1");
         panelSwitcher.add(panel2, "panel2");
         panelSwitcher.add(testPanel, "testPanel");
-        cardLayout.show(panelSwitcher, "panel1");
+        cardLayout.show(panelSwitcher, "panel1"); // displays the 1st panel
     }
     
     private void setupTestPanel()
@@ -270,12 +288,18 @@ public class ChessFrame implements ActionListener
         testPanel.add(b2);
     }
     
+    /**
+     * Starts the frame/game
+     */
     public void run()
     {
         synchBoards();
         message.setText(board.turnColor + "'s turn");
     }
     
+    /**
+     * Updates this frame to match the internal board
+     */
     public void synchBoards()
     {
         for(int i=0; i<pieceButtons.length; i++)

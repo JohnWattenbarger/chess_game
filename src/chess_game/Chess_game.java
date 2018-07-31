@@ -126,6 +126,10 @@ Next Edit:
         > center the main menu buttons
         > center the pieces (might require editing their pictures)
     - take out Board.printAllLegalMoves() when a player is in check
+    - Clean up the ChessFrame.java code
+        > create new methods to be used in setupNewGame
+        > change the chess board to a gridLayout
+        > change the message, board, and statusMessage to a groupLayout
 
 Future Features:
     - Create a CPU opponent
