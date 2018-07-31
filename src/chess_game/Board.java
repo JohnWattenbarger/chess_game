@@ -245,11 +245,11 @@ public class Board
         
         if(attemptedMove.isLegal())
         {
-            // test (never occurs)
-            if(attemptedMove.isInCheckAfter()){
-                errorMessage = "Still in check";
-                System.out.println("Still in check");
-            }
+//            // test (never occurs)
+//            if(attemptedMove.isInCheckAfter()){
+//                errorMessage = "Still in check";
+//                System.out.println("Still in check");
+//            }
             
             // if this is a castle move, move the rook
             if(attemptedMove.isCastleMove)
@@ -309,6 +309,10 @@ public class Board
             this.enPassantLocation = attemptedMove.enPassantLocation;
             
             this.setNextTurn();
+            
+            // See if the next player is in check (for ChessFrame.java)
+            if(this.isCheck())
+                errorMessage = "Check";
         }
         else
         {

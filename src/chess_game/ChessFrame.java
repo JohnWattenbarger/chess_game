@@ -95,8 +95,11 @@ public class ChessFrame implements ActionListener
                     board.userMove(moveFrom, moveTo);
                     moveFrom = null;
                     synchBoards();
-                    message.setText(board.turnColor + "'s turn");
+                    
                     statusMessage.setText(board.errorMessage);
+                    board.errorMessage = "";
+                    
+                    message.setText(board.turnColor + "'s turn");
                     if (board.isCheckmate())
                         message.setText(board.turnColor + " wins!");
                 }
