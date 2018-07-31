@@ -76,18 +76,6 @@ Current Date: 3/1/18
         > give it a grid layout
     - Created chessFrame.run() and chessFrame.synchBoard()
         > need to make b.move() come from button clicks, not command typing
-
-Last Edit:
-    - Added status update to the GUI
-        > created a JLabel that contains status updates
-        > changed System.out.println() messages in Board.java to a String
-        > passed the String to ChessFrame.java
-            -> if there is a new String, display it
-
-Current Goals:
-    - Make the GUI display clicks
-        > when a piece is selected, change the color (or something)
-        > when a piece is unselected, change the color back
     - Add en passant rules
         > The board() should have a Location called enPassantLocation
         > When a move() is a pawn move: 
@@ -101,6 +89,18 @@ Current Goals:
         > The board() should reset it's enPassantLocation after each move
             -> set enPassantLocation to whatever move.enPassantLocation is 
                 (either null or a location)
+
+Last Edit:
+    - Added status update to the GUI
+        > created a JLabel that contains status updates
+        > changed System.out.println() messages in Board.java to a String
+        > passed the String to ChessFrame.java
+            -> if there is a new String, display it
+    - Make the GUI display clicks
+        > when a piece is selected, change the color (or something)
+        > when a piece is unselected, change the color back
+
+Current Goals:
 
 Next Edit:
     - Add in stale mate
