@@ -34,6 +34,8 @@ public class ChessFrame implements ActionListener
     Color whiteSquare = new Color(220, 220, 220);
     Color blackSquare = new Color(150, 120, 50);
     Color selectedSquare = new Color(20, 220, 220);
+    int selectedSquareNumber;
+    Color selectedSquareColor;
 // JPanel to switch between which JPanel is displayed in the frame
     JPanel panelSwitcher;
     CardLayout cardLayout;
@@ -92,11 +94,17 @@ public class ChessFrame implements ActionListener
                     moveFrom = new Location(i/8, i%8);
                     
                     // Change the color of the moveFrom location
-                    
+                    selectedSquareColor = pieceButtons[i].getBackground();
+                    pieceButtons[i].setBackground(selectedSquare);
+                    selectedSquareNumber = i;
                 }
                 else
                 {
                     moveTo = new Location(i/8, i%8);
+                    
+                    // Reset the color of the moveFrom location
+                    pieceButtons[selectedSquareNumber].setBackground(
+                            selectedSquareColor);
                     
                     board.userMove(moveFrom, moveTo);
                     moveFrom = null;
