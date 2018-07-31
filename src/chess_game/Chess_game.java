@@ -68,21 +68,23 @@ Current Date: 3/1/18
     - Added en passant
     - Added pawn promotion
 
-Last Edit:
+9th Edit:
     - Began working on my chess frame
     - added blank image for blank pieces
     - Fixed addActionListener() for pieceButtons[]
     - Consider rewriting panel2
         > give it a grid layout
-    - Created TestFrame.run() and TestFrame.synchBoard()
+    - Created chessFrame.run() and chessFrame.synchBoard()
         > need to make b.move() come from button clicks, not command typing
 
-Current Goals:
-    - Add status update to the GUI
-        > create a JLabel that contains status updates
-        > changes System.out.println() messages in Board.java to a String
-        > pass the String to ChessFrame.java
+Last Edit:
+    - Added status update to the GUI
+        > created a JLabel that contains status updates
+        > changed System.out.println() messages in Board.java to a String
+        > passed the String to ChessFrame.java
             -> if there is a new String, display it
+
+Current Goals:
     - Make the GUI display clicks
         > when a piece is selected, change the color (or something)
         > when a piece is unselected, change the color back

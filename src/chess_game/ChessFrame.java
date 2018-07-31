@@ -31,6 +31,9 @@ public class ChessFrame implements ActionListener
     Font buttonFont = new Font(Font.DIALOG, Font.PLAIN, screenHeight/25);
 // chess board
     Board board = new Board();
+    Color whiteSquare = new Color(220, 220, 220);
+    Color blackSquare = new Color(150, 120, 50);
+    Color selectedSquare = new Color(20, 220, 220);
 // JPanel to switch between which JPanel is displayed in the frame
     JPanel panelSwitcher;
     CardLayout cardLayout;
@@ -87,6 +90,9 @@ public class ChessFrame implements ActionListener
                 if (moveFrom == null)
                 {
                     moveFrom = new Location(i/8, i%8);
+                    
+                    // Change the color of the moveFrom location
+                    
                 }
                 else
                 {
@@ -223,14 +229,14 @@ public class ChessFrame implements ActionListener
             }
             if(i/8%2 == 0)
                     if(i%2 == 0)
-                        pieceButtons[i].setBackground(new Color(220, 220, 220));
+                        pieceButtons[i].setBackground(whiteSquare);
                     else
-                        pieceButtons[i].setBackground(new Color(150, 120, 50));
+                        pieceButtons[i].setBackground(blackSquare);
                 else
                     if(i%2 == 1)
-                        pieceButtons[i].setBackground(new Color(220, 220, 220));
+                        pieceButtons[i].setBackground(whiteSquare);
                     else
-                        pieceButtons[i].setBackground(new Color(150, 120, 50));
+                        pieceButtons[i].setBackground(blackSquare);
         }        
         // displays each piece/button
         for(int i=0; i<pieceButtons.length; i++)
