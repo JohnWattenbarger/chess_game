@@ -101,6 +101,13 @@ Last Edit:
         > when a piece is unselected, change the color back
 
 Current Goals:
+    - On pawn promotion moves, create a GUI popup with the pieces that the user 
+        can choose
+    - Make "!!! ILLEGAL MOVE !!!" stop printing on the console
+    - Add stale mate
+    - Add 3 repitition draws
+    - Add 50 move draw
+    - Make non-piece squares unselectable
 
 Next Edit:
     - Add in stale mate
