@@ -161,36 +161,46 @@ Future Features:
 class Chess_game {
     public static void main(String[] args) 
     {
-//        Board b = new Board();
-//        b.defaultBoard();
-//        
-//        // prompt the user for moves until checkmate is achieved
-//        while(!b.isCheckmate())
-//        {
-//            b.printBoard();
-//            b.displayTurn();
-////            
-////            // test
-////            if(b.enPassantLocation == null)
-////                System.out.println("enPassantLocation: null");
-////            else
-////            {
-////                System.out.print("enPassantLocation: ");
-////                b.enPassantLocation.printChessNotation();
-////            }
-//            
-//            if(b.isCheck())
-//                System.out.println("=========== CHECK =============");
-//            if(b.isCheckmate())
-//                System.out.println("~~~~~~~~~~~ Checkmate ~~~~~~~~~~~~");
-//            b.userMove();
-//            b.setNextTurn();
-//        }
-//        
-//        b.printBoard();
-//        System.out.println("Game over");
-//        b.printWinner();
+        // textGame();
+        graphicsGame();
+    }
+    
+    /**
+     * Creates a text version of chess.
+     */
+    public static void textGame(){
+        Board b = new Board();
+        b.defaultBoard();
         
+        // prompt the user for moves until checkmate is achieved
+        while(!b.isCheckmate())
+        {
+            b.printBoard();
+            b.displayTurn();
+//            
+//            // test
+//            if(b.enPassantLocation == null)
+//                System.out.println("enPassantLocation: null");
+//            else
+//            {
+//                System.out.print("enPassantLocation: ");
+//                b.enPassantLocation.printChessNotation();
+//            }
+            
+            if(b.isCheck())
+                System.out.println("=========== CHECK =============");
+            if(b.isCheckmate())
+                System.out.println("~~~~~~~~~~~ Checkmate ~~~~~~~~~~~~");
+            b.userMove();
+            b.setNextTurn();
+        }
+        
+        b.printBoard();
+        System.out.println("Game over");
+        b.printWinner();
+    }
+    
+    public static void graphicsGame(){
         ChessFrame c = new ChessFrame();
         c.run();
     }
