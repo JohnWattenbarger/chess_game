@@ -74,6 +74,7 @@ public class ChessFrame implements ActionListener
         thisFrame.setVisible(true);
     }
 
+    // Where button clicks are handled
     @Override
     public void actionPerformed(ActionEvent e) 
     {
@@ -93,10 +94,15 @@ public class ChessFrame implements ActionListener
                 {
                     moveFrom = new Location(i/8, i%8);
                     
+                    if(board.pieceAt(moveFrom).isNull())
+                        moveFrom = null;
+                    
                     // Change the color of the moveFrom location
-                    selectedSquareColor = pieceButtons[i].getBackground();
-                    pieceButtons[i].setBackground(selectedSquare);
-                    selectedSquareNumber = i;
+                    else{
+                        selectedSquareColor = pieceButtons[i].getBackground();
+                        pieceButtons[i].setBackground(selectedSquare);
+                        selectedSquareNumber = i;
+                    }
                 }
                 else
                 {
@@ -115,7 +121,10 @@ public class ChessFrame implements ActionListener
                     
                     message.setText(board.turnColor + "'s turn");
                     if (board.isCheckmate())
+                    {
                         message.setText(board.turnColor + " wins!");
+                        statusMessage.setText("Checkmate");
+                    }
                 }
         }
     }   

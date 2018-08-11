@@ -29,6 +29,7 @@ public class Move
     boolean isEnPassantMove = false;
     Location enPassantLocation = null;
     Location enPassantDeleteLocation = null;
+//    boolean isPawnPromotion = false;
     
     /**
      * Create a blank Move

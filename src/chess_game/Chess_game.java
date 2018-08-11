@@ -103,6 +103,7 @@ Last Edit:
 Current Goals:
     - On pawn promotion moves, create a GUI popup with the pieces that the user 
         can choose
+        > need to pass 
     - Make "!!! ILLEGAL MOVE !!!" stop printing on the console
     - Add stale mate
     - Add 3 repitition draws
