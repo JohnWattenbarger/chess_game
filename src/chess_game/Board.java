@@ -262,11 +262,13 @@ public class Board
         
         if(attemptedMove.isLegal())
         {
-//            // test (never occurs)
-//            if(attemptedMove.isInCheckAfter()){
-//                errorMessage = "Still in check";
-//                System.out.println("Still in check");
-//            }
+            if(attemptedMove.newPiece.notNull())
+            {
+                if(attemptedMove.newPiece.getColor().equals("white"))
+                    this.piecesWhite.remove(this.pieceAt(attemptedMove.newLocation));
+                if(attemptedMove.newPiece.getColor().equals("black"))
+                    this.piecesBlack.remove(this.pieceAt(attemptedMove.newLocation));
+            }
             
             // if this is a castle move, move the rook
             if(attemptedMove.isCastleMove)
@@ -275,7 +277,14 @@ public class Board
             
             // if this is a castle move, delete/capture the other player's pawn
             if(attemptedMove.isEnPassantMove)
+            {
                 this.board[attemptedMove.enPassantDeleteLocation.row][attemptedMove.enPassantDeleteLocation.column] = new Piece();
+                
+                if(attemptedMove.originalPiece.getColor().equals("white"))
+                    this.piecesBlack.remove(this.pieceAt(attemptedMove.enPassantDeleteLocation));
+                if(attemptedMove.originalPiece.getColor().equals("black"))
+                    this.piecesWhite.remove(this.pieceAt(attemptedMove.enPassantDeleteLocation));
+            }
             
             // check if a pawn made it to row 0 or 7 and promote it
             if(attemptedMove.originalPieceType.equals("pawn"))
@@ -890,4 +899,12 @@ public class Board
         return picture;
     }
     
+    public void printPieceArrayLists()
+    {
+        System.out.println("White Pieces:");
+        for(Piece i:this.piecesWhite)
+            i.printPiece();
+        for(Piece i:this.piecesBlack)
+            i.printPiece();
+    }
 }
