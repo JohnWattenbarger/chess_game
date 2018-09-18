@@ -31,7 +31,7 @@ public class Piece
     {
         this.setColor(c);
         this.setPieceType(p);
-        this.setImage();
+//        this.setImage();
         
         hasMoved = false;
     }
@@ -242,6 +242,9 @@ public class Piece
     
     public Image getImage()
     {
+        if(picture == null)
+            this.setImage();
+        
         return picture;
     }
     
