@@ -262,6 +262,7 @@ public class Board
         
         if(attemptedMove.isLegal())
         {
+            // update piece ArrayLists
             if(attemptedMove.newPiece.notNull())
             {
                 if(attemptedMove.newPiece.getColor().equals("white"))
@@ -273,6 +274,7 @@ public class Board
             // if this is a castle move, move the rook
             if(attemptedMove.isCastleMove)
                 move(attemptedMove.rookStart, attemptedMove.rookEnd);
+            
             move(attemptedMove);
             
             // if this is a castle move, delete/capture the other player's pawn
@@ -316,6 +318,15 @@ public class Board
         
         if(attemptedMove.isLegal())
         {
+            // update piece ArrayLists
+            if(attemptedMove.newPiece.notNull())
+            {
+                if(attemptedMove.newPiece.getColor().equals("white"))
+                    this.piecesWhite.remove(this.pieceAt(attemptedMove.newLocation));
+                if(attemptedMove.newPiece.getColor().equals("black"))
+                    this.piecesBlack.remove(this.pieceAt(attemptedMove.newLocation));
+            }
+            
             // if this is a castle move, move the rook
             if(attemptedMove.isCastleMove)
                 move(attemptedMove.rookStart, attemptedMove.rookEnd);
@@ -324,7 +335,15 @@ public class Board
             
             // if this is a castle move, delete/capture the other player's pawn
             if(attemptedMove.isEnPassantMove)
+            {
                 this.board[attemptedMove.enPassantDeleteLocation.row][attemptedMove.enPassantDeleteLocation.column] = new Piece();
+                
+                // update piece ArrayLists
+                if(attemptedMove.originalPiece.getColor().equals("white"))
+                    this.piecesBlack.remove(this.pieceAt(attemptedMove.enPassantDeleteLocation));
+                if(attemptedMove.originalPiece.getColor().equals("black"))
+                    this.piecesWhite.remove(this.pieceAt(attemptedMove.enPassantDeleteLocation));
+            }
             
             // check if a pawn made it to row 0 or 7 and promote it
             if(attemptedMove.originalPieceType.equals("pawn"))
