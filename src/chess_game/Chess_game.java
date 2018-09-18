@@ -101,6 +101,14 @@ Last Edit:
         > when a piece is unselected, change the color back
 
 Current Goals:
+    - Speed up game
+        - change default constructor of Board and Piece to not include images
+            and other unnecessary features
+        - search through Piece ArrayLists to find pieces (instead of the whole 
+            board)
+        - when testing for checkmate, only see if there are legal moves for the 
+            other player that: move the king, capture the checking piece, block
+            the path b/w the checking piece and the king
     - On pawn promotion moves, create a GUI popup with the pieces that the user 
         can choose
         > need to pass 
@@ -171,7 +179,7 @@ class Chess_game {
      */
     public static void textGame(){
         Board b = new Board();
-        b.defaultBoard();
+        b.setup();
         
         // prompt the user for moves until checkmate is achieved
         while(!b.isCheckmate())

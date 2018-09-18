@@ -20,7 +20,24 @@ public class Board
     ArrayList<Piece> piecesWhite = new ArrayList<Piece>();
     ArrayList<Piece> piecesBlack = new ArrayList<Piece>();
     
+    /**
+     * This constructor creates a blank Board. To add a chess board image and 
+     * setup chess pieces in their default starting position call Board.setup()
+     */
     public Board()
+    {
+        board = new Piece [8][8];
+        blankBoard();
+        winner = "";
+        errorMessage = "";
+    }
+    
+    /**
+     * This method creates a default chess board, adds an image to the chess 
+     * board, and initializes the board array, winner, and errorMessage. This 
+     * method should be called for a permanent board.
+     */
+    public void setup()
     {
         board = new Piece [8][8];
         defaultBoard();
@@ -151,7 +168,12 @@ public class Board
                 Location thisLocation = new Location(i, j);
                 Piece thisPiece = this.pieceAt(thisLocation);
                 if(thisPiece.getColor().equals("white"))
+                {
                     piecesWhite.add(thisPiece);
+                    System.out.print("i:" + i + " j:" + j + " ");
+                    thisPiece.printPiece();
+                    System.out.println();
+                }
                 if(thisPiece.getColor().equals("black"))
                     piecesBlack.add(thisPiece);
             }
@@ -295,6 +317,9 @@ public class Board
                     // System.out.println("~~~~ Pawn Promotion ~~~~");
             
             this.enPassantLocation = attemptedMove.enPassantLocation;
+            
+            // test
+            this.printPieceArrayLists();
         }
         else
         {
@@ -922,8 +947,14 @@ public class Board
     {
         System.out.println("White Pieces:");
         for(Piece i:this.piecesWhite)
-            i.printPiece();
+//            if(i.notNull())
+                i.printPiece();
+        System.out.println();
+        
+        System.out.println("Black Pieces:");
         for(Piece i:this.piecesBlack)
-            i.printPiece();
+//            if(i.notNull())
+                i.printPiece();
+        System.out.println();
     }
 }

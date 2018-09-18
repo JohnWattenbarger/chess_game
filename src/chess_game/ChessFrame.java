@@ -64,6 +64,8 @@ public class ChessFrame implements ActionListener
     
     public ChessFrame()
     {
+        board.setup();
+        
         setupFrame();
         setupMainMenu();
         setupNewGame();
