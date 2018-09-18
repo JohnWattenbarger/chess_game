@@ -90,7 +90,7 @@ Current Date: 3/1/18
             -> set enPassantLocation to whatever move.enPassantLocation is 
                 (either null or a location)
 
-Last Edit:
+10th Edit:
     - Added status update to the GUI
         > created a JLabel that contains status updates
         > changed System.out.println() messages in Board.java to a String
@@ -102,8 +102,6 @@ Last Edit:
 
 Current Goals:
     - Speed up game
-        - change default constructor of Board and Piece to not include images
-            and other unnecessary features
         - search through Piece ArrayLists to find pieces (instead of the whole 
             board)
         - when testing for checkmate, only see if there are legal moves for the 
