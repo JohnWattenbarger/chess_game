@@ -17,8 +17,8 @@ public class Board
     public String winner;
     Location enPassantLocation = null;
     public String errorMessage;
-    ArrayList<Piece> piecesWhite;
-    ArrayList<Piece> piecesBlack;
+    ArrayList<Piece> piecesWhite = new ArrayList<Piece>();
+    ArrayList<Piece> piecesBlack = new ArrayList<Piece>();
     
     public Board()
     {
@@ -47,6 +47,7 @@ public class Board
     {
         blankBoard();
         setupPieces();
+        setupPieceArrayLists();
         this.turnColor = "white";
     }
     
@@ -140,6 +141,20 @@ public class Board
     {
         board[0][4] = new Piece('b', 'k');
         board[7][4] = new Piece('w', 'k');
+    }
+    
+    private void setupPieceArrayLists()
+    {
+        for(int i=0; i<8; i++)
+            for(int j=0; j<8; j++)
+            {
+                Location thisLocation = new Location(i, j);
+                Piece thisPiece = this.pieceAt(thisLocation);
+                if(thisPiece.getColor().equals("white"))
+                    piecesWhite.add(thisPiece);
+                if(thisPiece.getColor().equals("black"))
+                    piecesBlack.add(thisPiece);
+            }
     }
     
     /**
