@@ -297,12 +297,14 @@ public class Board
             // if this is a castle move, delete/capture the other player's pawn
             if(attemptedMove.isEnPassantMove)
             {
-                this.board[attemptedMove.enPassantDeleteLocation.row][attemptedMove.enPassantDeleteLocation.column] = new Piece();
-                
+                // update piece ArrayLists
                 if(attemptedMove.originalPiece.getColor().equals("white"))
                     this.piecesBlack.remove(this.pieceAt(attemptedMove.enPassantDeleteLocation));
                 if(attemptedMove.originalPiece.getColor().equals("black"))
                     this.piecesWhite.remove(this.pieceAt(attemptedMove.enPassantDeleteLocation));
+                
+                // delete the captured piece
+                this.board[attemptedMove.enPassantDeleteLocation.row][attemptedMove.enPassantDeleteLocation.column] = new Piece();
             }
             
             // check if a pawn made it to row 0 or 7 and promote it
@@ -312,9 +314,6 @@ public class Board
                     // System.out.println("~~~~ Pawn Promotion ~~~~");
             
             this.enPassantLocation = attemptedMove.enPassantLocation;
-            
-            // test
-            this.printPieceArrayLists();
         }
         else
         {
