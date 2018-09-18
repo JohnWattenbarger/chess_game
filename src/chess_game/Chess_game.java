@@ -18,6 +18,11 @@ Current Goals:
         > need to pass 
     - Make "!!! ILLEGAL MOVE !!!" stop printing on the console
     - Add stale mate
+        > create Board method isStalemate()
+        > possibly do isCheck(), isStalemate(), isCheckmate() in the same 
+            function to eliminate getting all legal moves multiple times
+        > another solution would be to keep track of legalMoves as an attribute 
+            of Board, and set it to null after each turn
     - Add 3 repitition draws
     - Add 50 move draw
     - Make non-piece squares unselectable
@@ -42,9 +47,6 @@ Next Edit:
             -> When a piece is selected, displaying legal moves in some way
                 (changing the background color would be easiest, although 
                 adding a dot in legal move locations might look better)
-        > show which piece is currently selected (easiest way would probably be 
-            changing the background color, although making the piece image 
-            bigger might look better)
         > center the main menu buttons
         > center the pieces (might require editing their pictures)
     - take out Board.printAllLegalMoves() when a player is in check
@@ -74,8 +76,8 @@ Future Features:
 class Chess_game {
     public static void main(String[] args) 
     {
-//         textGame();
-        graphicsGame();
+         textGame();
+//        graphicsGame();
     }
     
     /**
@@ -86,7 +88,7 @@ class Chess_game {
         b.setup();
         
         // prompt the user for moves until checkmate is achieved
-        while(!b.isCheckmate())
+        while(!b.isCheckmate() && !b.isStalemate())
         {
             b.printBoard();
             b.displayTurn();
@@ -110,7 +112,11 @@ class Chess_game {
         
         b.printBoard();
         System.out.println("Game over");
-        b.printWinner();
+        if(!b.isStalemate())
+            b.printWinner();
+        
+        if(b.isStalemate())
+            System.out.println("Stalemate");
     }
     
     public static void graphicsGame(){
