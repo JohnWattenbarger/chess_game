@@ -819,6 +819,17 @@ public class Board
         return true;
     }
     
+    public boolean isStalemate()
+    {
+        if(isCheck())
+            return false;
+        
+        if(getLegalMoves().isEmpty())
+            return true;
+        
+        return false;
+    }
+    
     /**
      * Determines if the next/other player could move to a location (regardless 
      * of whether they would be in check or not). Tests all 
