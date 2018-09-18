@@ -17,8 +17,8 @@ public class Board
     public String winner;
     Location enPassantLocation = null;
     public String errorMessage;
-    Piece[] piecesWhite;
-    Piece[] blackPieces;
+    ArrayList<Piece> piecesWhite;
+    ArrayList<Piece> piecesBlack;
     
     public Board()
     {
