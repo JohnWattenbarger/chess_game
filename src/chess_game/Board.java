@@ -17,6 +17,8 @@ public class Board
     public String winner;
     Location enPassantLocation = null;
     public String errorMessage;
+    Piece[] piecesWhite;
+    Piece[] blackPieces;
     
     public Board()
     {

@@ -162,7 +162,7 @@ Future Features:
 class Chess_game {
     public static void main(String[] args) 
     {
-        // textGame();
+//         textGame();
         graphicsGame();
     }
     
