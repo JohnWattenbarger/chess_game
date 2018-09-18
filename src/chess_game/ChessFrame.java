@@ -36,6 +36,7 @@ public class ChessFrame implements ActionListener
     Color selectedSquare = new Color(20, 220, 220);
     int selectedSquareNumber;
     Color selectedSquareColor;
+    Boolean checkmate = false;
 // JPanel to switch between which JPanel is displayed in the frame
     JPanel panelSwitcher;
     CardLayout cardLayout;
@@ -89,46 +90,48 @@ public class ChessFrame implements ActionListener
             panel2.add(test);
             
         // action after a piece button is clicked
-        for(int i=0; i<pieceButtons.length; i++)
-        {
-            if (e.getSource() == pieceButtons[i])
-                if (moveFrom == null)
-                {
-                    moveFrom = new Location(i/8, i%8);
-                    
-                    if(board.pieceAt(moveFrom).isNull())
-                        moveFrom = null;
-                    
-                    // Change the color of the moveFrom location
-                    else{
-                        selectedSquareColor = pieceButtons[i].getBackground();
-                        pieceButtons[i].setBackground(selectedSquare);
-                        selectedSquareNumber = i;
-                    }
-                }
-                else
-                {
-                    moveTo = new Location(i/8, i%8);
-                    
-                    // Reset the color of the moveFrom location
-                    pieceButtons[selectedSquareNumber].setBackground(
-                            selectedSquareColor);
-                    
-                    board.userMove(moveFrom, moveTo);
-                    moveFrom = null;
-                    synchBoards();
-                    
-                    statusMessage.setText(board.errorMessage);
-                    board.errorMessage = "";
-                    
-                    message.setText(board.turnColor + "'s turn");
-                    if (board.isCheckmate())
+        if(!checkmate)
+            for(int i=0; i<pieceButtons.length; i++)
+            {
+                if (e.getSource() == pieceButtons[i])
+                    if (moveFrom == null)
                     {
-                        message.setText(board.turnColor + " wins!");
-                        statusMessage.setText("Checkmate");
+                        moveFrom = new Location(i/8, i%8);
+
+                        if(board.pieceAt(moveFrom).isNull())
+                            moveFrom = null;
+
+                        // Change the color of the moveFrom location
+                        else{
+                            selectedSquareColor = pieceButtons[i].getBackground();
+                            pieceButtons[i].setBackground(selectedSquare);
+                            selectedSquareNumber = i;
+                        }
                     }
-                }
-        }
+                    else
+                    {
+                        moveTo = new Location(i/8, i%8);
+
+                        // Reset the color of the moveFrom location
+                        pieceButtons[selectedSquareNumber].setBackground(
+                                selectedSquareColor);
+
+                        board.userMove(moveFrom, moveTo);
+                        moveFrom = null;
+                        synchBoards();
+
+                        statusMessage.setText(board.errorMessage);
+                        board.errorMessage = "";
+
+                        message.setText(board.turnColor + "'s turn");
+                        if (board.isCheckmate())
+                        {
+                            message.setText(board.turnColor + " wins!");
+                            statusMessage.setText("Checkmate");
+                            checkmate = true;
+                        }
+                    }
+            }
     }   
     
     /**

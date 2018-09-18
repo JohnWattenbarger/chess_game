@@ -168,12 +168,7 @@ public class Board
                 Location thisLocation = new Location(i, j);
                 Piece thisPiece = this.pieceAt(thisLocation);
                 if(thisPiece.getColor().equals("white"))
-                {
                     piecesWhite.add(thisPiece);
-                    System.out.print("i:" + i + " j:" + j + " ");
-                    thisPiece.printPiece();
-                    System.out.println();
-                }
                 if(thisPiece.getColor().equals("black"))
                     piecesBlack.add(thisPiece);
             }
