@@ -819,6 +819,13 @@ public class Board
         return true;
     }
     
+    /**
+     * Test if stalemate has been reached. Stalemate means that the current 
+     * player is not in check, and has no legal moves (that won't put them in 
+     * check.
+     * 
+     * @return true if stalemate has been achieved.
+     */
     public boolean isStalemate()
     {
         if(isCheck())
@@ -830,6 +837,13 @@ public class Board
         return false;
     }
     
+    /**
+     * Test if the game has ended. The game can end in 2 ways: checkmate or 
+     * stalemate. If the game has ended, then there are no legal moves left for 
+     * the current player to make.
+     * 
+     * @return true if the game is over.
+     */
     public boolean isGameOver()
     {
         if(getLegalMoves().isEmpty())
