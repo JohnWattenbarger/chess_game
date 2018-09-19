@@ -36,7 +36,7 @@ public class ChessFrame implements ActionListener
     Color selectedSquare = new Color(20, 220, 220);
     int selectedSquareNumber;
     Color selectedSquareColor;
-    Boolean checkmate = false;
+    Boolean gameOver = false;
 // JPanel to switch between which JPanel is displayed in the frame
     JPanel panelSwitcher;
     CardLayout cardLayout;
@@ -90,7 +90,7 @@ public class ChessFrame implements ActionListener
             panel2.add(test);
             
         // action after a piece button is clicked
-        if(!checkmate)
+        if(!gameOver)
             for(int i=0; i<pieceButtons.length; i++)
             {
                 if (e.getSource() == pieceButtons[i])
@@ -124,11 +124,22 @@ public class ChessFrame implements ActionListener
                         board.errorMessage = "";
 
                         message.setText(board.turnColor + "'s turn");
-                        if (board.isCheckmate())
+                        
+                        if(board.isGameOver())
                         {
-                            message.setText(board.turnColor + " wins!");
-                            statusMessage.setText("Checkmate");
-                            checkmate = true;
+                            gameOver = true;
+                            
+                            if (board.isCheckmate())
+                            {
+                                message.setText(board.turnColor + " wins!");
+                                statusMessage.setText("Checkmate");
+                            }
+                            
+                            if(board.isStalemate())
+                            {
+                                message.setText("It's a draw");
+                                statusMessage.setText("Stalemate");
+                            }
                         }
                     }
             }
