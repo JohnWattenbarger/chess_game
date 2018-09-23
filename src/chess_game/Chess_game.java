@@ -7,6 +7,12 @@ Created: 1/27/18
 Current Date: 3/1/18
 
 Current Goals:
+    - Use Board.legalMoves ArrayList to keep track of legal moves
+        > should reduce calling Board.getLegalMoves() more than once per turn
+        > before each move: if (legalMoves.isEmpty) legalMoves = getLegalMoves()
+        > after each move: set legalMoves = null
+        > need to update many functions (isCheck, isStalemate, isCheckmate, etc.
+            --> ctrl+f: getLegalMoves()
     - Speed up game
         - search through Piece ArrayLists to find pieces (instead of the whole 
             board)

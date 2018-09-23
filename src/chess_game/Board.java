@@ -19,6 +19,7 @@ public class Board
     public String errorMessage;
     ArrayList<Piece> piecesWhite = new ArrayList<Piece>();
     ArrayList<Piece> piecesBlack = new ArrayList<Piece>();
+    
     ArrayList<Move> legalMoves = new ArrayList<Move>();
     
     /**
