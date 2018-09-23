@@ -325,9 +325,12 @@ public class Board
     }
     
     /**
-     * Prompts the user for the location of a piece to move, and a location to 
-     * move to. If the move is legal, the piece is moved to the new location.
-     * If the move is illegal, this method is called again.
+     * Attempts to move a piece from moveFrom Location to moveTo Location. If 
+     * the move is legal, the piece is moved to the new location. If the move is
+     * illegal, this method is called again.
+     * 
+     * @param moveFrom the starting location of the piece you wish to move
+     * @param moveTo the location that you would like to move the piece to
      */
     public void userMove(Location moveFrom, Location moveTo)
     {
@@ -382,7 +385,7 @@ public class Board
         else
         {
             errorMessage = "ILLEGAL MOVE";
-            System.out.println("!!! ILLEGAL MOVE !!!");
+//            System.out.println("!!! ILLEGAL MOVE !!!");
         }
     }
             
