@@ -19,6 +19,7 @@ public class Board
     public String errorMessage;
     ArrayList<Piece> piecesWhite = new ArrayList<Piece>();
     ArrayList<Piece> piecesBlack = new ArrayList<Piece>();
+    ArrayList<Move> legalMoves = new ArrayList<Move>();
     
     /**
      * This constructor creates a blank Board. To add a chess board image and 
